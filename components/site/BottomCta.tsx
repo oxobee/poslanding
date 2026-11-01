@@ -20,10 +20,10 @@ export function BottomCta({
   return (
     <section className="py-20 sm:py-28 bg-white relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl bg-[#080C14] p-9 sm:p-16 text-center overflow-hidden border border-slate-800 shadow-2xl">
+        <div className="relative isolate rounded-3xl bg-[#080C14] p-8 sm:p-16 text-center overflow-hidden border border-slate-800 shadow-2xl">
           {/* Crimson ambient glow from top and bottom */}
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-48 bg-[#EA004B]/25 blur-3xl rounded-full pointer-events-none" />
-          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[500px] h-48 bg-[#EA004B]/30 blur-3xl rounded-full pointer-events-none" />
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-full max-w-[450px] h-48 bg-[#EA004B]/25 blur-3xl rounded-full pointer-events-none -z-10" />
+          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-full max-w-[450px] h-48 bg-[#EA004B]/30 blur-3xl rounded-full pointer-events-none -z-10" />
 
           <div className="relative z-10 max-w-2xl mx-auto space-y-5">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-rose-300 border border-white/15">

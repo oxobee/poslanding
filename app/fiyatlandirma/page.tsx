@@ -16,7 +16,7 @@ export default function FiyatlandirmaPage() {
     <>
       <Navbar />
       <main className="pt-20">
-        <PricingSection />
+        <PricingSection hideComparisonLink={true} />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <ComparisonTable />
         </div>

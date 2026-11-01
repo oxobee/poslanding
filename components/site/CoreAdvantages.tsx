@@ -56,17 +56,13 @@ export function CoreAdvantages() {
         </div>
 
         {/* 3 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-          {advantages.map((item, idx) => {
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {advantages.map((item) => {
             const Icon = item.icon;
             return (
-              <motion.div
+              <div
                 key={item.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.45, delay: idx * 0.12 }}
-                className="group relative bg-white border border-slate-200/90 rounded-3xl p-8 hover:border-[#EA004B]/50 hover:shadow-2xl hover:shadow-[#EA004B]/8 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5"
+                className="group relative bg-white border border-slate-200 rounded-3xl p-7 hover:border-[#EA004B]/50 hover:shadow-xl hover:shadow-[#EA004B]/5 transition-all duration-200 flex flex-col justify-between hover:-translate-y-1"
               >
                 <div>
                   {/* Top Row: Icon & Tag */}
@@ -99,7 +95,7 @@ export function CoreAdvantages() {
                     <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

@@ -63,17 +63,13 @@ export function ProcessSteps() {
         </div>
 
         {/* 5 Steps Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-          {steps.map((step, idx) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {steps.map((step) => {
             const Icon = step.icon;
             return (
-              <motion.div
+              <div
                 key={step.num}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="bg-white border border-slate-200/90 rounded-3xl p-6 hover:border-[#EA004B]/50 hover:shadow-xl hover:shadow-[#EA004B]/6 transition-all duration-300 flex flex-col justify-between relative group hover:-translate-y-1"
+                className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#EA004B]/50 hover:shadow-lg hover:shadow-[#EA004B]/5 transition-all duration-200 flex flex-col justify-between relative group hover:-translate-y-1"
               >
                 <div>
                   {/* Top row: Number & Role Badge */}
@@ -101,7 +97,7 @@ export function ProcessSteps() {
                     {step.desc}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

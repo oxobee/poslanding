@@ -66,8 +66,8 @@ export function ComparisonTable() {
         </p>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-left text-xs border-collapse">
+      <div className="overflow-x-auto -mx-2 sm:mx-0 px-2 sm:px-0">
+        <table className="w-full min-w-[560px] text-left text-xs border-collapse">
           <thead>
             <tr className="border-b border-slate-200 text-slate-500 uppercase tracking-wider text-[11px]">
               <th className="py-3 px-4 font-semibold w-2/5">ÖZELLİKLER</th>

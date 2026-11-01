@@ -6,7 +6,13 @@ import { Check, Sparkles, ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { DemoModal } from "./DemoModal";
 import Link from "next/link";
 
-export function PricingSection({ showDetailedTable = false }: { showDetailedTable?: boolean }) {
+export function PricingSection({
+  showDetailedTable = false,
+  hideComparisonLink = false,
+}: {
+  showDetailedTable?: boolean;
+  hideComparisonLink?: boolean;
+}) {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("Profesyonel Paket - ₺3.500 + KDV");
 
@@ -35,8 +41,8 @@ export function PricingSection({ showDetailedTable = false }: { showDetailedTabl
         </div>
 
         {/* Top Special Banner: Kurucu İşletme Programı */}
-        <div className="mb-14 bg-gradient-to-r from-rose-50/70 via-white to-rose-50/50 border border-[#EA004B]/30 rounded-3xl p-7 sm:p-9 shadow-md relative overflow-hidden">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="mb-12 sm:mb-14 bg-gradient-to-r from-rose-50/70 via-white to-rose-50/50 border border-[#EA004B]/30 rounded-3xl p-5 sm:p-9 shadow-md relative overflow-hidden">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
             <div className="space-y-4 flex-1 text-center lg:text-left">
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
                 <span className="px-3 py-1 rounded-full text-xs font-black bg-[#EA004B] text-white tracking-wide uppercase">
@@ -102,9 +108,9 @@ export function PricingSection({ showDetailedTable = false }: { showDetailedTabl
         </div>
 
         {/* 3 Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 items-stretch">
           {/* 1. Operasyon Paketi */}
-          <div className="bg-white border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between hover:border-slate-300 transition-all hover:shadow-lg">
+          <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-300 transition-all hover:shadow-lg">
             <div>
               <h3 className="text-xl font-extrabold text-slate-900 mb-1">Operasyon Paketi</h3>
               <p className="text-xs text-slate-500 mb-6 min-h-[32px] leading-relaxed">
@@ -168,7 +174,7 @@ export function PricingSection({ showDetailedTable = false }: { showDetailedTabl
           </div>
 
           {/* 2. Profesyonel Paket (En Çok Tercih Edilen) */}
-          <div className="bg-white border-2 border-[#EA004B] rounded-3xl p-8 flex flex-col justify-between shadow-2xl shadow-[#EA004B]/12 relative lg:-translate-y-2">
+          <div className="bg-white border-2 border-[#EA004B] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl shadow-[#EA004B]/12 relative lg:-translate-y-2">
             {/* Top Pill */}
             <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#EA004B] text-white px-4 py-1 rounded-full text-[11px] font-black tracking-wider uppercase shadow-md shadow-[#EA004B]/30">
               EN ÇOK TERCİH EDİLEN
@@ -238,7 +244,7 @@ export function PricingSection({ showDetailedTable = false }: { showDetailedTabl
           </div>
 
           {/* 3. Kurumsal Paket */}
-          <div className="bg-white border border-slate-200/90 rounded-3xl p-8 flex flex-col justify-between hover:border-slate-300 transition-all hover:shadow-lg">
+          <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-300 transition-all hover:shadow-lg">
             <div>
               <h3 className="text-xl font-extrabold text-slate-900 mb-1">Kurumsal</h3>
               <p className="text-xs text-slate-500 mb-6 min-h-[32px] leading-relaxed">
@@ -299,15 +305,17 @@ export function PricingSection({ showDetailedTable = false }: { showDetailedTabl
         </div>
 
         {/* Link to Full Comparison Page */}
-        <div className="mt-12 text-center">
-          <Link
-            href="/fiyatlandirma"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#EA004B] hover:text-[#D00042] transition"
-          >
-            <span>Tüm paket özelliklerini ve detaylı karşılaştırma tablosunu inceleyin</span>
-            <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-          </Link>
-        </div>
+        {!hideComparisonLink && (
+          <div className="mt-12 text-center">
+            <Link
+              href="/fiyatlandirma"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#EA004B] hover:text-[#D00042] transition"
+            >
+              <span>Tüm paket özelliklerini ve detaylı karşılaştırma tablosunu inceleyin</span>
+              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+            </Link>
+          </div>
+        )}
       </div>
 
       <DemoModal
