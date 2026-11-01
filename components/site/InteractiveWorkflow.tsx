@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Smartphone, Monitor, Receipt, Sparkles, Clock, ShieldCheck, Zap, ArrowRight } from "lucide-react";
-import { DemoModal } from "./DemoModal";
 
 export function InteractiveWorkflow() {
   const [activeTab, setActiveTab] = useState<"guest" | "kds" | "pos">("guest");
-  const [demoModalOpen, setDemoModalOpen] = useState(false);
 
   const tabData = {
     guest: {
@@ -203,13 +202,13 @@ export function InteractiveWorkflow() {
               </div>
 
               <div className="pt-3">
-                <button
-                  onClick={() => setDemoModalOpen(true)}
+                <Link
+                  href="/basvuru"
                   className="btn-shine-container tap-effect inline-flex items-center gap-2 py-3 px-6 rounded-xl font-bold text-xs text-white bg-[#EA004B] hover:bg-[#D00042] shadow-md shadow-[#EA004B]/20 transition"
                 >
-                  <span>Canlı Demoyu Gör</span>
+                  <span>Hemen Başvur & Demo Al</span>
                   <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -243,8 +242,6 @@ export function InteractiveWorkflow() {
           </motion.div>
         </AnimatePresence>
       </div>
-
-      <DemoModal isOpen={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
     </section>
   );
 }

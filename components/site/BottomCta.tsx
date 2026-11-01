@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
 import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
-import { DemoModal } from "./DemoModal";
 import { motion } from "framer-motion";
 
 interface BottomCtaProps {
@@ -16,8 +16,6 @@ export function BottomCta({
   subtitle = "24 saat içinde menünüzü aktaralım ve mutfağınızı operasyona hazır hale getirelim.",
   buttonText = "Demo Talep Et",
 }: BottomCtaProps) {
-  const [demoModalOpen, setDemoModalOpen] = useState(false);
-
   return (
     <section className="py-20 sm:py-28 relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,19 +62,17 @@ export function BottomCta({
             </div>
 
             <div className="pt-4 flex justify-center">
-              <button
-                onClick={() => setDemoModalOpen(true)}
-                className="btn-shine-container tap-effect px-9 py-4 rounded-2xl font-bold text-white bg-[#EA004B] hover:bg-[#D00042] active:bg-[#B8003A] shadow-2xl shadow-[#EA004B]/50 hover:shadow-[#EA004B]/60 transition-all flex items-center gap-2 text-sm sm:text-base cursor-pointer active:scale-[0.98]"
+              <Link
+                href="/basvuru"
+                className="btn-shine-container tap-effect px-9 py-4 rounded-2xl font-bold text-white bg-[#EA004B] hover:bg-[#D00042] active:bg-[#B8003A] shadow-2xl shadow-[#EA004B]/50 hover:shadow-[#EA004B]/60 transition-all flex items-center gap-2 text-sm sm:text-base cursor-pointer active:scale-[0.98] font-black"
               >
                 <span>{buttonText}</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-
-      <DemoModal isOpen={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
     </section>
   );
 }

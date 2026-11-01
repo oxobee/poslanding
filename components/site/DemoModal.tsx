@@ -243,9 +243,10 @@ export function DemoModal({ isOpen, onClose, initialPackage = "Profesyonel Paket
                           onChange={(e) => setFormData({ ...formData, selectedPackage: e.target.value })}
                           className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#EA004B] focus:border-transparent transition bg-white font-medium"
                         >
-                          <option value="Kurucu İşletme Paketi - ₺990 + KDV">Kurucu İşletme Paketi - ₺990 + KDV (Lansman Özel)</option>
-                          <option value="Operasyon Paketi - ₺2.000 + KDV">Operasyon Paketi - ₺2.000 + KDV</option>
-                          <option value="Profesyonel Paket - ₺3.500 + KDV">Profesyonel Paket - ₺3.500 + KDV (En Popüler)</option>
+                          <option value="Kurucu İşletme Paketi - ₺1.999 + KDV">Kurucu İşletme Paketi - ₺1.999 + KDV (Lansman Özel)</option>
+                          <option value="Profesyonel Paket - ₺2.999 + KDV">Profesyonel Paket - ₺2.999 + KDV (En Popüler)</option>
+                          <option value="Kurulum ve Özel Tasarım - ₺12.000 + KDV">Kurulum ve Özel Tasarım - ₺12.000 + KDV (Kampanyalı)</option>
+                          <option value="OxonomPos Medya Hizmeti - ₺20.000 + KDV / ay">OxonomPos Medya Hizmeti - ₺20.000 + KDV / ay</option>
                           <option value="Kurumsal Paket - Teklif Al">Kurumsal Paket - Özel Teklif</option>
                         </select>
                       </div>

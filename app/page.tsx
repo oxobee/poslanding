@@ -2,6 +2,7 @@ import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { CoreAdvantages } from "@/components/site/CoreAdvantages";
 import { ProcessSteps } from "@/components/site/ProcessSteps";
+import { WhatsAppBanner } from "@/components/site/WhatsAppBanner";
 import { PricingSection } from "@/components/site/PricingSection";
 import { FaqSection } from "@/components/site/FaqSection";
 import { BottomCta } from "@/components/site/BottomCta";
@@ -15,6 +16,7 @@ export default function HomePage() {
         <Hero />
         <CoreAdvantages />
         <ProcessSteps />
+        <WhatsAppBanner />
         <PricingSection />
         <FaqSection />
         <BottomCta

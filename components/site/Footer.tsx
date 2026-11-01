@@ -1,13 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { OxonomPosLogo } from "./OxonomPosLogo";
-import { DemoModal } from "./DemoModal";
 import { Instagram, Linkedin, Twitter, Mail, Clock, Phone } from "lucide-react";
 
 export function Footer() {
-  const [demoModalOpen, setDemoModalOpen] = useState(false);
 
   return (
     <>
@@ -27,14 +25,14 @@ export function Footer() {
                 </div>
                 <div className="flex items-center gap-2 text-xs">
                   <Phone className="w-3.5 h-3.5 text-[#EA004B]" />
-                  <a href="tel:08503080000" className="hover:text-white transition-colors font-medium">
-                    0850 308 00 00
+                  <a href="tel:08503070368" className="hover:text-white transition-colors font-medium">
+                    0850 307 03 68
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
                   <Mail className="w-3.5 h-3.5 text-[#EA004B]" />
-                  <a href="mailto:info@oxonompos.com" className="hover:text-white transition-colors">
-                    info@oxonompos.com
+                  <a href="mailto:pos@oxonom.com" className="hover:text-white transition-colors">
+                    pos@oxonom.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-400">
@@ -106,16 +104,16 @@ export function Footer() {
               </h4>
               <ul className="space-y-2.5">
                 <li>
-                  <button
-                    onClick={() => setDemoModalOpen(true)}
-                    className="hover:text-white transition-colors cursor-pointer text-left"
+                  <Link
+                    href="/basvuru"
+                    className="hover:text-white transition-colors"
                   >
                     Demo & Başvuru
-                  </button>
+                  </Link>
                 </li>
                 <li>
                   <a
-                    href="https://agenapos.vercel.app"
+                    href="https://pos.oxonom.com/restoran-girisi"
                     target="_blank"
                     rel="noreferrer"
                     className="hover:text-white transition-colors"
@@ -191,13 +189,11 @@ export function Footer() {
               © 2026 oxonom pos Teknoloji. Tüm hakları saklıdır.
             </div>
             <div className="flex items-center gap-4">
-              <span>Türkiye'nin Restoran Operasyon Zekası</span>
+              <span>Türkiye'nin Restoran Operasyon Zekası · pos.oxonom.com</span>
             </div>
           </div>
         </div>
       </footer>
-
-      <DemoModal isOpen={demoModalOpen} onClose={() => setDemoModalOpen(false)} />
     </>
   );
 }

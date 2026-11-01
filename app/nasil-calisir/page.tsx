@@ -14,7 +14,7 @@ export default function NasilCalisirPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-28 sm:pt-32">
         <InteractiveWorkflow />
         <ProcessSteps />
         <BottomCta

@@ -19,10 +19,10 @@ export function OxonomPosLogo({
   href = "/",
 }: OxonomPosLogoProps) {
   const iconSizes = {
-    sm: 30,
-    md: 36,
-    lg: 44,
-    xl: 54,
+    sm: 32,
+    md: 38,
+    lg: 46,
+    xl: 56,
   };
 
   const textSizes = {
@@ -35,7 +35,7 @@ export function OxonomPosLogo({
   const posBadgeSizes = {
     sm: "text-[10px] px-1.5 py-0.5",
     md: "text-xs px-2 py-0.5",
-    lg: "text-sm px-2.5 py-1",
+    lg: "text-sm px-2.5 py-0.5",
     xl: "text-base px-3.5 py-1",
   };
 
@@ -44,97 +44,106 @@ export function OxonomPosLogo({
 
   const Content = (
     <div className={`inline-flex items-center gap-2.5 select-none group cursor-pointer ${className}`}>
-      {/* Modern Sweet Brand Mark */}
-      <div className="relative flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:rotate-1">
+      {/* Precision Engineered POS Brand Glyph */}
+      <div className="relative flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
         <svg
           width={currentIconSize}
           height={currentIconSize}
-          viewBox="0 0 44 44"
+          viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="drop-shadow-sm transition-transform duration-200"
+          className="drop-shadow-md transition-all duration-300 group-hover:drop-shadow-lg"
         >
           <defs>
+            {/* Primary Brand Crimson Gradient */}
             <linearGradient id={`oxoGrad_${size}_${variant}`} x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF1E6A" />
-              <stop offset="45%" stopColor="#EA004B" />
-              <stop offset="100%" stopColor="#C8003E" />
+              <stop offset="0%" stopColor="#FF2E75" />
+              <stop offset="50%" stopColor="#EA004B" />
+              <stop offset="100%" stopColor="#B30036" />
             </linearGradient>
-            <filter id={`oxoShadow_${size}`} x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodColor="#EA004B" floodOpacity="0.3" />
+
+            {/* Subtle Inner Glass Bevel */}
+            <linearGradient id={`oxoHighlight_${size}`} x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+            </linearGradient>
+
+            {/* Depth Shadow */}
+            <filter id={`oxoGlow_${size}`} x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#EA004B" floodOpacity="0.35" />
             </filter>
           </defs>
 
-          {/* Squircle Container */}
-          <rect
-            x="2"
-            y="2"
-            width="40"
-            height="40"
-            rx="12"
-            fill={`url(#oxoGrad_${size}_${variant})`}
-            filter={`url(#oxoShadow_${size})`}
-          />
-
-          {/* Glass Highlight Stroke */}
+          {/* Squircle Badge Container */}
           <rect
             x="3"
             y="3"
-            width="38"
-            height="38"
-            rx="11"
-            stroke="rgba(255,255,255,0.3)"
-            strokeWidth="1.2"
+            width="42"
+            height="42"
+            rx="13"
+            fill={`url(#oxoGrad_${size}_${variant})`}
+            filter={`url(#oxoGlow_${size})`}
+          />
+
+          {/* Precision Glass Border */}
+          <rect
+            x="3.75"
+            y="3.75"
+            width="40.5"
+            height="40.5"
+            rx="12.25"
+            stroke={`url(#oxoHighlight_${size})`}
+            strokeWidth="1.5"
             fill="none"
           />
 
-          {/* Stylized Modern O Ring */}
+          {/* Iconic Geometric Outer "O" Ring */}
           <circle
-            cx="22"
-            cy="22"
-            r="10"
+            cx="24"
+            cy="24"
+            r="11.5"
             stroke="#FFFFFF"
             strokeWidth="3.2"
             strokeLinecap="round"
           />
 
-          {/* Pulse Signal Center */}
+          {/* Core Pulse Point */}
           <circle
-            cx="22"
-            cy="22"
-            r="3.5"
+            cx="24"
+            cy="24"
+            r="4.2"
             fill="#FFFFFF"
           />
 
-          {/* Contactless Signal Arc */}
+          {/* Fast Contactless / Cloud Signal Wave */}
           <path
-            d="M 28 14 A 12 12 0 0 1 33 21"
+            d="M 31 16 C 33.5 18.5 35 21 35 24 C 35 27 33.5 29.5 31 32"
             stroke="#FFFFFF"
-            strokeWidth="2.5"
+            strokeWidth="2.6"
             strokeLinecap="round"
-            opacity="0.95"
+            opacity="0.9"
           />
         </svg>
       </div>
 
-      {/* Typography: Sweet, Professional, Highly Readable Font */}
+      {/* Typography: Clean, Modern, Professional Neo-Grotesque */}
       {showText && (
         <div className="flex items-center tracking-tight leading-none">
           <span
             className={`font-black ${textSizes[size]} tracking-tight transition-colors duration-200 ${
               isWhite ? "text-white" : "text-slate-900 group-hover:text-black"
             }`}
-            style={{ letterSpacing: "-0.04em" }}
+            style={{ letterSpacing: "-0.045em" }}
           >
             oxonom
           </span>
           <span
-            className={`ml-1.5 font-bold uppercase rounded-lg tracking-wider transition-all duration-200 group-hover:scale-105 ${
+            className={`ml-1.5 font-extrabold uppercase rounded-lg tracking-wider transition-all duration-200 group-hover:shadow-md ${
               posBadgeSizes[size]
             } ${
               isWhite
-                ? "bg-[#EA004B] text-white shadow-sm"
-                : "bg-[#EA004B] text-white shadow-sm shadow-[#EA004B]/30 group-hover:bg-[#D00042]"
+                ? "bg-[#EA004B] text-white shadow-xs"
+                : "bg-[#EA004B] text-white shadow-sm shadow-[#EA004B]/35 group-hover:bg-[#D00042]"
             }`}
             style={{ letterSpacing: "0.06em" }}
           >
@@ -147,7 +156,10 @@ export function OxonomPosLogo({
 
   if (href) {
     return (
-      <Link href={href} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EA004B] rounded-xl inline-block">
+      <Link
+        href={href}
+        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EA004B] rounded-xl inline-block"
+      >
         {Content}
       </Link>
     );

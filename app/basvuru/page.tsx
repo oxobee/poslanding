@@ -15,7 +15,7 @@ export default function BasvuruPage() {
     contactName: "",
     phone: "",
     email: "",
-    selectedPackage: "Profesyonel Paket - ₺3.500 + KDV",
+    selectedPackage: "Profesyonel Paket - ₺2.999 + KDV",
     tableCount: "24",
     referralCode: "",
     notes: "",
@@ -23,6 +23,23 @@ export default function BasvuruPage() {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const p = new URLSearchParams(window.location.search).get("paket");
+      if (p === "kurucu-isletme") {
+        setFormData(prev => ({ ...prev, selectedPackage: "Kurucu İşletme Paketi - ₺1.999 + KDV" }));
+      } else if (p === "kurulum-tasarim") {
+        setFormData(prev => ({ ...prev, selectedPackage: "Kurulum ve Özel Tasarım - ₺12.000 + KDV" }));
+      } else if (p === "medya-hizmeti") {
+        setFormData(prev => ({ ...prev, selectedPackage: "OxonomPos Medya Hizmeti - ₺20.000 + KDV / ay" }));
+      } else if (p === "kurumsal") {
+        setFormData(prev => ({ ...prev, selectedPackage: "Kurumsal Paket - Teklif Al" }));
+      } else if (p?.includes("profesyonel")) {
+        setFormData(prev => ({ ...prev, selectedPackage: "Profesyonel Paket - ₺2.999 + KDV" }));
+      }
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,14 +118,32 @@ export default function BasvuruPage() {
                 </div>
               </div>
 
-              {/* Kurucu Program Notice */}
-              <div className="bg-gradient-to-r from-amber-50 to-rose-50 border border-amber-200/80 rounded-3xl p-6 shadow-xs">
-                <span className="text-[11px] font-black text-amber-900 uppercase tracking-wider block mb-1">
-                  Kurucu İşletme Programı Devam Ediyor
-                </span>
-                <p className="text-xs text-amber-950 leading-relaxed font-normal">
-                  İlk 10 onaylanan restorana özel aylık <strong>990 TL + KDV</strong> sabit fiyat garantisi. Başvurunuzda otomatik değerlendirilir.
+              {/* Kurucu Program Notice - Eye-catching, theme-aligned and updated to 1.999 TL */}
+              <div className="relative overflow-hidden bg-gradient-to-br from-[#FFF0F4] via-white to-rose-50/70 border-2 border-[#EA004B]/35 rounded-3xl p-6 sm:p-7 shadow-lg">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#EA004B]/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#EA004B] text-white shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+                    Lansman Özel · Son 3 Kontenjan
+                  </span>
+                  <span className="text-xs font-black text-[#EA004B] bg-white px-2 py-0.5 rounded-md border border-[#EA004B]/20">
+                    ₺1.999 + KDV / ay
+                  </span>
+                </div>
+                <h3 className="text-base font-black text-slate-900 tracking-tight mb-1.5">
+                  KURUCU İŞLETME PROGRAMI DEVAM EDİYOR
+                </h3>
+                <p className="text-xs text-slate-700 leading-relaxed font-medium mb-3.5">
+                  İlk 10 onaylanan restorana özel aylık <strong>1.999 TL + KDV</strong> sabit fiyat garantisi. Başvurunuzda otomatik değerlendirilir ve kontenjan ayrılır.
                 </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-700 font-semibold border-t border-[#EA004B]/15 pt-3">
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#EA004B]" /> Ömür Boyu Sabit Fiyat
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#EA004B]" /> Sıfır Komisyon Garantisi
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -277,9 +312,10 @@ export default function BasvuruPage() {
                           onChange={(e) => setFormData({ ...formData, selectedPackage: e.target.value })}
                           className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#EA004B] focus:border-transparent transition bg-white font-medium"
                         >
-                          <option value="Kurucu İşletme Paketi - ₺990 + KDV">Kurucu İşletme Paketi - ₺990 + KDV (Lansman Özel)</option>
-                          <option value="Operasyon Paketi - ₺2.000 + KDV">Operasyon Paketi - ₺2.000 + KDV</option>
-                          <option value="Profesyonel Paket - ₺3.500 + KDV">Profesyonel Paket - ₺3.500 + KDV (En Popüler)</option>
+                          <option value="Kurucu İşletme Paketi - ₺1.999 + KDV">Kurucu İşletme Paketi - ₺1.999 + KDV (Lansman Özel)</option>
+                          <option value="Profesyonel Paket - ₺2.999 + KDV">Profesyonel Paket - ₺2.999 + KDV (En Popüler)</option>
+                          <option value="Kurulum ve Özel Tasarım - ₺12.000 + KDV">Kurulum ve Özel Tasarım - ₺12.000 + KDV (Kampanyalı)</option>
+                          <option value="OxonomPos Medya Hizmeti - ₺20.000 + KDV / ay">OxonomPos Medya Hizmeti - ₺20.000 + KDV / ay</option>
                           <option value="Kurumsal Paket - Teklif Al">Kurumsal Paket - Özel Teklif</option>
                         </select>
                       </div>
