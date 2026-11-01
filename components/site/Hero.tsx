@@ -1,16 +1,67 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Check, ArrowRight, ChevronRight, Zap, CheckCircle2, Clock, Sparkles } from "lucide-react";
+import {
+  Check,
+  ArrowRight,
+  ChevronRight,
+  Zap,
+  CheckCircle2,
+  Clock,
+  UtensilsCrossed,
+  Coffee,
+  Building2,
+  ChefHat,
+  Sparkles,
+} from "lucide-react";
 import { ProductScreenShowcase } from "./ProductScreenShowcase";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+const BUSINESS_TYPES = [
+  {
+    name: "Restoran",
+    icon: UtensilsCrossed,
+    color: "#EA004B",
+    tag: "Fine Dining & Bistro",
+  },
+  {
+    name: "Cafe",
+    icon: Coffee,
+    color: "#FF2B72",
+    tag: "Kahve & Bakery",
+  },
+  {
+    name: "Otel",
+    icon: Building2,
+    color: "#D00042",
+    tag: "Otel & Tesis",
+  },
+  {
+    name: "Lokanta",
+    icon: ChefHat,
+    color: "#B30034",
+    tag: "Geleneksel & Esnaf",
+  },
+] as const;
 
 export function Hero() {
+  const [typeIndex, setTypeIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTypeIndex((prev) => (prev + 1) % BUSINESS_TYPES.length);
+    }, 2600);
+    return () => clearInterval(timer);
+  }, []);
+
+  const currentItem = BUSINESS_TYPES[typeIndex];
+  const CurrentIcon = currentItem.icon;
+
   return (
     <section className="relative isolate pt-28 sm:pt-36 md:pt-40 pb-14 sm:pb-20 overflow-hidden">
       {/* Dynamic Background Ambient Radial Mesh */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[340px] bg-gradient-to-b from-[#EA004B]/15 via-[#EA004B]/6 to-transparent blur-3xl rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-full max-w-[750px] h-[360px] bg-gradient-to-b from-[#EA004B]/15 via-[#EA004B]/6 to-transparent blur-3xl rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         {/* Top Announcement Pill */}
@@ -28,9 +79,60 @@ export function Hero() {
           <ChevronRight className="w-3.5 h-3.5 stroke-[2.5] flex-shrink-0" />
         </Link>
 
-        {/* Main Headline */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.12]">
-          Restoran operasyonunuzu <br className="hidden sm:inline" />
+        {/* Main Headline with 3D Rotating Business Type: Restoran, Cafe, Otel, Lokanta */}
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.22] sm:leading-[1.16]">
+          {/* Distinctive 3D Tumbler Capsule Container */}
+          <span className="relative inline-flex items-center justify-center align-baseline [perspective:1200px] my-1 mr-2 sm:mr-3">
+            <span className="relative inline-flex items-center justify-center min-w-[170px] sm:min-w-[240px] md:min-w-[280px] lg:min-w-[320px] px-3.5 sm:px-6 py-1 sm:py-2 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white via-[#FFF7F9] to-[#FFEBF1] border-2 border-[#EA004B]/35 shadow-[0_10px_28px_-6px_rgba(234,0,75,0.28)] ring-4 ring-[#EA004B]/10 overflow-hidden">
+              {/* Subtle Glass Specular Top Highlight */}
+              <span className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/80 to-transparent pointer-events-none" />
+
+              {/* 3D Animated Content Roller */}
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={currentItem.name}
+                  initial={{
+                    rotateX: 90,
+                    y: 22,
+                    opacity: 0,
+                    scale: 0.9,
+                  }}
+                  animate={{
+                    rotateX: 0,
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  exit={{
+                    rotateX: -90,
+                    y: -22,
+                    opacity: 0,
+                    scale: 0.9,
+                  }}
+                  transition={{
+                    duration: 0.42,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="inline-flex items-center gap-2 sm:gap-3 select-none transform-gpu"
+                  style={{
+                    transformOrigin: "50% 50% -24px",
+                    backfaceVisibility: "hidden",
+                  }}
+                >
+                  {/* Category Micro-Icon Badge */}
+                  <span className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#FF2B72] to-[#EA004B] text-white flex items-center justify-center shadow-md shadow-[#EA004B]/30 flex-shrink-0">
+                    <CurrentIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5 stroke-[2.5]" />
+                  </span>
+
+                  {/* Sector Title with Radiant Gradient & Dimensional Depth */}
+                  <span className="bg-gradient-to-r from-[#EA004B] via-[#FF1E6A] to-[#B80036] bg-clip-text text-transparent font-black tracking-tight drop-shadow-[0_1px_2px_rgba(234,0,75,0.2)]">
+                    {currentItem.name}
+                  </span>
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </span>
+          operasyonunuzu <br className="hidden sm:inline" />
           <span className="text-[#EA004B] relative inline-block">
             tek akışta
             <svg
@@ -94,7 +196,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Interactive Live Screen Showcase with Floating Floating Badges */}
+        {/* Interactive Live Screen Showcase with Floating Badges */}
         <div className="mt-10 sm:mt-12 relative">
           {/* Floating Metric Badge 1: Left */}
           <motion.div
