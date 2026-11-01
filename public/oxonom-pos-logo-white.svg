@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 64" fill="none">
+  <defs>
+    <linearGradient id="oxonomPosGradW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF1E6A" />
+      <stop offset="50%" stop-color="#EA004B" />
+      <stop offset="100%" stop-color="#CE0042" />
+    </linearGradient>
+  </defs>
+
+  <!-- Icon Mark Container -->
+  <g transform="translate(4, 4)">
+    <rect x="0" y="0" width="56" height="56" rx="16" fill="url(#oxonomPosGradW)" />
+    <rect x="1.5" y="1.5" width="53" height="53" rx="14.5" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none" />
+    
+    <!-- Geometric O Ring -->
+    <circle cx="28" cy="28" r="14" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" />
+    <!-- Pulse Center Dot -->
+    <circle cx="28" cy="28" r="4.8" fill="#FFFFFF" />
+    <!-- Fast Tap Arc -->
+    <path d="M 36 17 A 16 16 0 0 1 43 27" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+  </g>
+
+  <!-- Wordmark "oxonom" in White -->
+  <text x="76" y="43" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif" font-size="34" font-weight="800" letter-spacing="-0.04em" fill="#FFFFFF">oxonom</text>
+
+  <!-- Pill Badge "POS" -->
+  <g transform="translate(242, 17)">
+    <rect x="0" y="0" width="58" height="28" rx="8" fill="#EA004B" />
+    <text x="29" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif" font-size="14" font-weight="800" letter-spacing="0.08em" fill="#FFFFFF" text-anchor="middle">POS</text>
+  </g>
+</svg>
