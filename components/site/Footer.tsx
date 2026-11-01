@@ -26,6 +26,12 @@ export function Footer() {
                   BİZE ULAŞIN
                 </div>
                 <div className="flex items-center gap-2 text-xs">
+                  <Phone className="w-3.5 h-3.5 text-[#EA004B]" />
+                  <a href="tel:08503080000" className="hover:text-white transition-colors font-medium">
+                    0850 308 00 00
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
                   <Mail className="w-3.5 h-3.5 text-[#EA004B]" />
                   <a href="mailto:info@oxonompos.com" className="hover:text-white transition-colors">
                     info@oxonompos.com

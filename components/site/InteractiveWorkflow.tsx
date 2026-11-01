@@ -114,7 +114,13 @@ export function InteractiveWorkflow() {
     <section className="py-24 sm:py-32 bg-white relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-2xl mx-auto mb-14"
+        >
           <span className="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFF0F4] text-[#EA004B] border border-[#EA004B]/20 mb-3.5 shadow-xs">
             Uçtan Uca Akış
           </span>
@@ -127,7 +133,7 @@ export function InteractiveWorkflow() {
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
             oxonom pos'un gücü, müşterinin telefonundaki hareketin aynı anda mutfak ekranına ve kasaya anlamlı bir veri olarak yansımasıdır.
           </p>
-        </div>
+        </motion.div>
 
         {/* 3 Pills Selector with tactile feedback */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-12">

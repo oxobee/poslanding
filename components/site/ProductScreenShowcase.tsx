@@ -99,10 +99,10 @@ export function ProductScreenShowcase() {
         </div>
 
         {/* Screen Showcase Viewport */}
-        <div className="p-3.5 sm:p-6 bg-slate-50/40">
+        <div className="p-3.5 sm:p-6 bg-slate-50/40 min-h-[380px]">
           {/* VIEW 1: POS & Live Tables */}
           {activeScreen === "pos" && (
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 animate-fade-in">
                 {/* Tables Grid (Left 7 Cols) */}
                 <div className="md:col-span-7 space-y-3">
                   <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
@@ -242,21 +242,21 @@ export function ProductScreenShowcase() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 mt-3 pt-2.5 border-t border-slate-100">
-                    <button className="py-2 px-3 rounded-xl text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition text-center cursor-pointer">
-                      Parçalı Hesap
-                    </button>
-                    <button className="py-2 px-3 rounded-xl text-[11px] font-bold text-white bg-[#EA004B] hover:bg-[#D00042] transition text-center cursor-pointer">
-                      Hesabı Kapat
-                    </button>
+                    <div className="grid grid-cols-2 gap-2 mt-3 pt-2.5 border-t border-slate-100">
+                      <button className="py-2 px-3 rounded-xl text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition text-center cursor-pointer active:scale-95">
+                        Parçalı Hesap
+                      </button>
+                      <button className="py-2 px-3 rounded-xl text-[11px] font-bold text-white bg-[#EA004B] hover:bg-[#D00042] transition text-center cursor-pointer active:scale-95">
+                        Hesabı Kapat
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            {/* VIEW 2: KDS Kitchen Display System */}
-            {activeScreen === "kds" && (
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+              {/* VIEW 2: KDS Kitchen Display System */}
+              {activeScreen === "kds" && (
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 animate-fade-in">
                 {/* Kitchen Ticket 1 */}
                 <div className="bg-white border-2 border-[#EA004B] rounded-2xl p-4 shadow-xs flex flex-col justify-between">
                   <div>
@@ -344,7 +344,7 @@ export function ProductScreenShowcase() {
 
             {/* VIEW 3: Guest QR Menu Experience */}
             {activeScreen === "qr" && (
-              <div className="max-w-sm mx-auto bg-white border border-slate-200 rounded-2xl p-4 shadow-md">
+              <div className="max-w-sm mx-auto bg-white border border-slate-200 rounded-2xl p-4 shadow-md animate-fade-in">
                 <div className="flex items-center justify-between pb-2.5 border-b border-slate-100">
                   <div className="flex items-center gap-2">
                     <span className="w-6 h-6 rounded-lg bg-[#FFF0F4] text-[#EA004B] flex items-center justify-center font-bold text-xs">
@@ -392,7 +392,7 @@ export function ProductScreenShowcase() {
                     <span className="text-[10px] text-slate-400 block font-semibold">Sepetim</span>
                     <span className="text-xs font-bold text-slate-900">₺500,00</span>
                   </div>
-                  <button className="py-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-[#EA004B] hover:bg-[#D00042] transition cursor-pointer">
+                  <button className="py-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-[#EA004B] hover:bg-[#D00042] transition cursor-pointer active:scale-95">
                     Sipariş Ver
                   </button>
                 </div>

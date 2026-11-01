@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { BackgroundGridPattern } from "@/components/site/BackgroundGridPattern";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -41,8 +42,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr" className={jakarta.variable}>
-      <body className="antialiased min-h-screen bg-white text-slate-900 selection:bg-[#EA004B] selection:text-white">
-        {children}
+      <body className="antialiased min-h-screen bg-white text-slate-900 selection:bg-[#EA004B] selection:text-white relative">
+        <BackgroundGridPattern />
+        <div className="relative z-10 flex flex-col min-h-screen">
+          {children}
+        </div>
         <Toaster position="bottom-right" toastOptions={{ duration: 4000 }} />
       </body>
     </html>

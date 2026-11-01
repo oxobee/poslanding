@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Check, Minus } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function ComparisonTable() {
   const categories = [

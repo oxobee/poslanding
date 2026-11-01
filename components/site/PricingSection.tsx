@@ -33,7 +33,7 @@ export function PricingSection({
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight"
             style={{ letterSpacing: "-0.03em" }}
           >
-            Şeffaf paketler. Sabit aylık ücret.
+            Şeffaf paketler. <span className="text-[#EA004B]">Sabit aylık ücret.</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
             oxonom pos yemek satışlarınızdan pay almaz. Bütçenize uygun paketi seçin, sabit aylık ücretle restoran operasyonunuzu tam hakimiyetle yönetin.
@@ -110,7 +110,7 @@ export function PricingSection({
         {/* 3 Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 items-stretch">
           {/* 1. Operasyon Paketi */}
-          <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-300 transition-all hover:shadow-lg">
+          <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-300 transition-all hover:shadow-xl hover:-translate-y-1">
             <div>
               <h3 className="text-xl font-extrabold text-slate-900 mb-1">Operasyon Paketi</h3>
               <p className="text-xs text-slate-500 mb-6 min-h-[32px] leading-relaxed">
@@ -167,14 +167,14 @@ export function PricingSection({
 
             <button
               onClick={() => handleSelectPlan("Operasyon Paketi - ₺2.000 + KDV")}
-              className="tap-effect mt-8 w-full py-3.5 px-4 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 transition cursor-pointer shadow-xs"
+              className="tap-effect mt-8 w-full py-3.5 px-4 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 transition cursor-pointer shadow-xs active:scale-[0.98]"
             >
               Operasyon Paketi Seç
             </button>
           </div>
 
           {/* 2. Profesyonel Paket (En Çok Tercih Edilen) */}
-          <div className="bg-white border-2 border-[#EA004B] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl shadow-[#EA004B]/12 relative lg:-translate-y-2">
+          <div className="bg-white border-2 border-[#EA004B] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl shadow-[#EA004B]/15 relative lg:-translate-y-2 hover:-translate-y-3 transition-all duration-300">
             {/* Top Pill */}
             <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#EA004B] text-white px-4 py-1 rounded-full text-[11px] font-black tracking-wider uppercase shadow-md shadow-[#EA004B]/30">
               EN ÇOK TERCİH EDİLEN
@@ -237,14 +237,14 @@ export function PricingSection({
 
             <button
               onClick={() => handleSelectPlan("Profesyonel Paket - ₺3.500 + KDV")}
-              className="btn-shine-container tap-effect mt-8 w-full py-3.5 px-4 rounded-xl text-xs font-bold text-white bg-[#EA004B] hover:bg-[#D00042] shadow-xl shadow-[#EA004B]/30 transition cursor-pointer"
+              className="btn-shine-container tap-effect mt-8 w-full py-3.5 px-4 rounded-xl text-xs font-bold text-white bg-[#EA004B] hover:bg-[#D00042] shadow-xl shadow-[#EA004B]/30 transition cursor-pointer active:scale-[0.98]"
             >
               Profesyonel Paketi Seç
             </button>
           </div>
 
           {/* 3. Kurumsal Paket */}
-          <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-300 transition-all hover:shadow-lg">
+          <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-300 transition-all hover:shadow-xl hover:-translate-y-1">
             <div>
               <h3 className="text-xl font-extrabold text-slate-900 mb-1">Kurumsal</h3>
               <p className="text-xs text-slate-500 mb-6 min-h-[32px] leading-relaxed">
@@ -297,7 +297,7 @@ export function PricingSection({
 
             <button
               onClick={() => handleSelectPlan("Kurumsal Paket - Teklif Al")}
-              className="tap-effect mt-8 w-full py-3.5 px-4 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 transition cursor-pointer shadow-xs"
+              className="tap-effect mt-8 w-full py-3.5 px-4 rounded-xl text-xs font-bold text-slate-800 bg-white border border-slate-200 hover:bg-slate-50 transition cursor-pointer shadow-xs active:scale-[0.98]"
             >
               Satış Ekibiyle Görüş
             </button>
