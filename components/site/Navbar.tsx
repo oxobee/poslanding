@@ -24,6 +24,8 @@ import {
   Zap,
   Building2,
   ExternalLink,
+  CreditCard,
+  BadgePercent,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -305,11 +307,17 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Actions: Demo Pill + Hamburger */}
-            <div className="flex items-center gap-2 lg:hidden">
+            {/* Mobile Actions: Fiyatlar + Demo + Hamburger */}
+            <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+              <Link
+                href="/fiyatlandirma"
+                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-700 hover:text-[#EA004B] bg-slate-100 hover:bg-[#FFF0F4] border border-slate-200/90 transition-all flex items-center gap-1"
+              >
+                <span>Fiyatlar</span>
+              </Link>
               <Link
                 href="/basvuru"
-                className="btn-shine-container px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-[#EA004B] shadow-sm shadow-[#EA004B]/20"
+                className="btn-shine-container px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-[#EA004B] shadow-sm shadow-[#EA004B]/20"
               >
                 Demo
               </Link>
@@ -370,6 +378,35 @@ export function Navbar() {
                 >
                   <X className="w-5 h-5 stroke-[2.5]" />
                 </button>
+              </div>
+
+              {/* HIGH-VISIBILITY SPOTLIGHT: FİYATLANDIRMA & PAKETLER */}
+              <div className="px-4 sm:px-5 pt-3 pb-2.5 bg-gradient-to-b from-white via-rose-50/40 to-slate-50 border-b border-rose-100/80">
+                <Link
+                  href="/fiyatlandirma"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-[#FFF0F4] via-white to-rose-50 border-2 border-[#EA004B]/35 shadow-sm shadow-[#EA004B]/10 hover:shadow-md transition-all active:scale-[0.98] group"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FF2B72] to-[#EA004B] text-white flex items-center justify-center shadow-md shadow-[#EA004B]/30 flex-shrink-0 group-hover:scale-105 transition-transform">
+                      <CreditCard className="w-5 h-5 stroke-[2.2]" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-[#EA004B] transition-colors truncate">
+                          Fiyatlandırma & Paketler
+                        </span>
+                        <span className="text-[9px] font-black px-1.5 py-0.5 rounded-md bg-[#EA004B] text-white tracking-wide uppercase flex-shrink-0">
+                          ₺1.999&#39;dan
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 font-medium truncate">
+                        Sıfır komisyon, sabit ücretler ve paket detayları
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-[#EA004B] group-hover:translate-x-1 transition-transform flex-shrink-0 ml-2" />
+                </Link>
               </div>
 
               {/* Drawer Category Switcher Tabs */}
@@ -449,6 +486,19 @@ export function Navbar() {
                         </Link>
                       );
                     })}
+
+                    {/* Quick Access to Pricing & Packages */}
+                    <Link
+                      href="/fiyatlandirma"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-[#FFF0F4] border border-slate-200 hover:border-[#EA004B]/30 transition-all text-xs font-bold text-slate-800 hover:text-[#EA004B]"
+                    >
+                      <div className="flex items-center gap-2">
+                        <BadgePercent className="w-4 h-4 text-[#EA004B]" />
+                        <span>Tüm Paket ve Fiyat Seçeneklerini Gör</span>
+                      </div>
+                      <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                    </Link>
                   </motion.div>
                 )}
 
@@ -486,6 +536,19 @@ export function Navbar() {
                         </Link>
                       );
                     })}
+
+                    {/* Quick Access to Pricing & Packages */}
+                    <Link
+                      href="/fiyatlandirma"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-[#FFF0F4] border border-slate-200 hover:border-[#EA004B]/30 transition-all text-xs font-bold text-slate-800 hover:text-[#EA004B]"
+                    >
+                      <div className="flex items-center gap-2">
+                        <BadgePercent className="w-4 h-4 text-[#EA004B]" />
+                        <span>Tüm Paket ve Fiyat Seçeneklerini Gör</span>
+                      </div>
+                      <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                    </Link>
                   </motion.div>
                 )}
 
