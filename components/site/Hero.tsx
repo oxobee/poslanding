@@ -47,16 +47,25 @@ const BUSINESS_TYPES = [
 
 export function Hero() {
   const [typeIndex, setTypeIndex] = useState(0);
+  const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTypeIndex((prev) => (prev + 1) % BUSINESS_TYPES.length);
-    }, 2600);
+      // Step 1: Start closing the selection lines and mouse towards the center
+      setIsClosing(true);
+
+      // Step 2: At mid-point (when lines meet in the center), update the text
+      setTimeout(() => {
+        setTypeIndex((prev) => (prev + 1) % BUSINESS_TYPES.length);
+        // Step 3: Open the lines and mouse back outwards to reveal the new word
+        setIsClosing(false);
+      }, 380);
+    }, 3200);
+
     return () => clearInterval(timer);
   }, []);
 
   const currentItem = BUSINESS_TYPES[typeIndex];
-  const CurrentIcon = currentItem.icon;
 
   return (
     <section className="relative isolate pt-28 sm:pt-36 md:pt-40 pb-14 sm:pb-20 overflow-hidden">
@@ -79,33 +88,47 @@ export function Hero() {
           <ChevronRight className="w-3.5 h-3.5 stroke-[2.5] flex-shrink-0" />
         </Link>
 
-        {/* Main Headline with Exact Canvas-Selection-Box Style Rotating Business Type */}
+        {/* Main Headline with Animated Canvas-Selection-Box Style Rotating Business Type */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.26] sm:leading-[1.18]">
-          {/* Canvas Text Selection Box */}
-          <span className="relative inline-flex items-center align-baseline [perspective:1000px] my-1 mr-6 sm:mr-8 md:mr-10">
-            <span className="relative inline-flex items-center justify-center min-w-[130px] sm:min-w-[190px] md:min-w-[230px] lg:min-w-[265px] px-2.5 sm:px-4 py-0.5 sm:py-1 bg-[#EA004B]/12 select-none">
-              {/* Left Handle Bar (extends above selection box with top square pin) */}
+          {/* Canvas Text Selection Box Container */}
+          <span className="relative inline-flex items-center justify-center align-baseline my-1 mx-1.5 sm:mx-2 mr-8 sm:mr-10 md:mr-12 min-w-[135px] sm:min-w-[190px] md:min-w-[230px] lg:min-w-[265px] px-2.5 sm:px-4 py-0.5 sm:py-1 select-none">
+            {/* Animated Selection Frame (contracts to 0% width in center, then springs back open to 100%) */}
+            <motion.span
+              className="absolute inset-y-0 left-1/2 -translate-x-1/2 bg-[#EA004B]/12 pointer-events-none rounded-[2px]"
+              animate={{
+                width: isClosing ? "0%" : "100%",
+                opacity: isClosing ? 0.3 : 1,
+              }}
+              transition={{
+                duration: isClosing ? 0.34 : 0.46,
+                ease: isClosing ? [0.4, 0, 0.2, 1] : [0.175, 0.885, 0.32, 1.25],
+              }}
+            >
+              {/* Left Handle Bar (extends slightly above selection box with top square pin) */}
               <span className="absolute left-0 -top-2.5 sm:-top-3 bottom-0 w-[2.5px] sm:w-[3px] bg-[#EA004B] pointer-events-none">
                 <span className="absolute -top-[4px] -left-[3.5px] sm:-left-[4px] w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#EA004B] rounded-[1px] shadow-xs" />
               </span>
 
-              {/* Right Handle Bar (extends below selection box with bottom square pin) */}
+              {/* Right Handle Bar (extends slightly below selection box with bottom square pin) */}
               <span className="absolute right-0 top-0 -bottom-2.5 sm:-bottom-3 w-[2.5px] sm:w-[3px] bg-[#EA004B] pointer-events-none">
                 <span className="absolute -bottom-[4px] -left-[3.5px] sm:-left-[4px] w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#EA004B] rounded-[1px] shadow-xs" />
               </span>
 
-              {/* Canvas Pointer Cursor (Positioned at top right of the selection) */}
+              {/* Canvas Pointer Cursor (Travels along with the right line as it opens/closes) */}
               <motion.div
                 animate={{
-                  y: [0, -3, 0],
-                  x: [0, 2, 0],
+                  x: isClosing ? -2 : [0, 3, 0],
+                  y: isClosing ? 2 : [0, -3, 0],
+                  scale: isClosing ? 0.9 : 1,
+                  rotate: isClosing ? -5 : 0,
                 }}
                 transition={{
-                  duration: 2.8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
+                  x: isClosing ? { duration: 0.34 } : { duration: 2.8, repeat: Infinity, ease: "easeInOut" },
+                  y: isClosing ? { duration: 0.34 } : { duration: 2.8, repeat: Infinity, ease: "easeInOut" },
+                  scale: { duration: 0.2 },
+                  rotate: { duration: 0.2 },
                 }}
-                className="absolute -right-6 sm:-right-7 md:-right-8 top-0 sm:top-1 z-20 pointer-events-none select-none"
+                className="absolute left-full ml-1 sm:ml-1.5 -top-1 sm:-top-0.5 z-20 pointer-events-none select-none"
               >
                 <svg
                   className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 drop-shadow-md"
@@ -122,40 +145,29 @@ export function Hero() {
                   />
                 </svg>
               </motion.div>
+            </motion.span>
 
-              {/* 3D Animated Word Flip */}
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={currentItem.name}
-                  initial={{
-                    rotateX: 90,
-                    y: 16,
-                    opacity: 0,
-                  }}
-                  animate={{
-                    rotateX: 0,
-                    y: 0,
-                    opacity: 1,
-                  }}
-                  exit={{
-                    rotateX: -90,
-                    y: -16,
-                    opacity: 0,
-                  }}
-                  transition={{
-                    duration: 0.38,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="inline-block text-slate-900 font-black tracking-tight transform-gpu"
-                  style={{
-                    transformOrigin: "50% 50% -20px",
-                    backfaceVisibility: "hidden",
-                  }}
-                >
-                  {currentItem.name}
-                </motion.span>
-              </AnimatePresence>
-            </span>
+            {/* Business Type Text (smoothly fades & shrinks while lines close, then pops back in as lines open) */}
+            <motion.span
+              key={currentItem.name}
+              initial={{
+                opacity: 0,
+                scale: 0.75,
+                filter: "blur(3px)",
+              }}
+              animate={{
+                opacity: isClosing ? 0 : 1,
+                scale: isClosing ? 0.75 : 1,
+                filter: isClosing ? "blur(3px)" : "blur(0px)",
+              }}
+              transition={{
+                duration: isClosing ? 0.28 : 0.4,
+                ease: isClosing ? [0.4, 0, 0.2, 1] : [0.16, 1, 0.3, 1],
+              }}
+              className="relative z-10 inline-block text-slate-900 font-black tracking-tight"
+            >
+              {currentItem.name}
+            </motion.span>
           </span>
           operasyonunuzu <br className="hidden sm:inline" />
           <span className="text-[#EA004B] relative inline-block">
