@@ -4,7 +4,7 @@ import React from "react";
 import { MessageCircle, ArrowRight, Zap, CheckCircle2 } from "lucide-react";
 
 export function WhatsAppBanner() {
-  const whatsappUrl = "https://wa.me/908503070368?text=Merhaba%2C%20oxonom%20pos%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.";
+  const whatsappUrl = "https://wa.me/908503099901?text=Merhaba%2C%20oxonom%20pos%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.";
 
   const sampleQuestions = [
     "Menümüz sisteme nasıl aktarılıyor?",
@@ -52,7 +52,7 @@ export function WhatsAppBanner() {
                   {sampleQuestions.map((q, idx) => (
                     <a
                       key={idx}
-                      href={`https://wa.me/908503070368?text=${encodeURIComponent(q)}`}
+                      href={`https://wa.me/908503099901?text=${encodeURIComponent(q)}`}
                       target="_blank"
                       rel="noreferrer"
                       className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 text-xs font-medium transition cursor-pointer flex items-center gap-1.5"
@@ -89,7 +89,7 @@ export function WhatsAppBanner() {
                   Resmi Destek & Bilgi Hattı
                 </span>
                 <span className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-0.5 block">
-                  0850 307 03 68
+                  0850 309 99 01
                 </span>
                 <span className="text-xs text-slate-400 mt-1 block">
                   WhatsApp üzerinden tek tıkla mesaj gönderin

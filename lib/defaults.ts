@@ -28,10 +28,10 @@ export const defaultSettings: SiteSettings = {
     schemaOrg: true,
   },
   contact: {
-    phone: "+90 212 000 00 00",
+    phone: "0850 307 03 68",
     phone2: "",
-    whatsapp: "+90 555 000 00 00",
-    email: "info@oxonompos.com",
+    whatsapp: "+908503099901",
+    email: "pos@oxonom.com",
     address: "Levent Mah. Büyükdere Cad. No:1",
     city: "İstanbul",
     country: "Türkiye",

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { OxonomPosLogo } from "./OxonomPosLogo";
-import { Instagram, Linkedin, Twitter, Mail, Clock, Phone } from "lucide-react";
+import { Instagram, Linkedin, Twitter, Mail, Clock, Phone, MessageCircle } from "lucide-react";
 
 export function Footer() {
 
@@ -27,6 +27,17 @@ export function Footer() {
                   <Phone className="w-3.5 h-3.5 text-[#EA004B]" />
                   <a href="tel:08503070368" className="hover:text-white transition-colors font-medium">
                     0850 307 03 68
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+                  <a
+                    href="https://wa.me/908503099901"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-white transition-colors font-medium"
+                  >
+                    WhatsApp: 0850 309 99 01
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
