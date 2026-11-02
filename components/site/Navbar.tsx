@@ -206,49 +206,99 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.98 }}
                       transition={{ duration: 0.18 }}
-                      className="absolute top-full left-0 mt-3 w-[640px] bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 grid grid-cols-2 gap-4 z-50 text-left"
+                      className="absolute top-full left-0 mt-3 w-[780px] lg:w-[840px] bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 grid grid-cols-12 gap-5 z-50 text-left"
                     >
-                      <div className="col-span-2 pb-2 border-b border-slate-100 flex items-center justify-between">
-                        <span className="text-[11px] font-bold tracking-wider uppercase text-[#EA004B]">
-                          oxonom pos Modülleri
-                        </span>
-                        <Link
-                          href="/nasil-calisir"
-                          onClick={() => setDesktopMegaOpen(false)}
-                          className="text-[11px] font-semibold text-slate-500 hover:text-[#EA004B] transition inline-flex items-center gap-1"
-                        >
-                          Tüm Akışı Gör <ArrowRight className="w-3 h-3" />
-                        </Link>
+                      {/* Left Column: Modules List */}
+                      <div className="col-span-7 flex flex-col justify-between">
+                        <div>
+                          <div className="pb-2.5 border-b border-slate-100 flex items-center justify-between mb-3">
+                            <span className="text-[11px] font-bold tracking-wider uppercase text-[#EA004B]">
+                              oxonom pos Modülleri
+                            </span>
+                            <Link
+                              href="/nasil-calisir"
+                              onClick={() => setDesktopMegaOpen(false)}
+                              className="text-[11px] font-semibold text-slate-500 hover:text-[#EA004B] transition inline-flex items-center gap-1"
+                            >
+                              Tüm Akışı Gör <ArrowRight className="w-3 h-3" />
+                            </Link>
+                          </div>
+
+                          <div className="space-y-1">
+                            {productSolutions.map((item) => {
+                              const Icon = item.icon;
+                              return (
+                                <Link
+                                  key={item.title}
+                                  href={item.href}
+                                  onClick={() => setDesktopMegaOpen(false)}
+                                  className="group p-2.5 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all flex items-start gap-3"
+                                >
+                                  <div className="w-8 h-8 rounded-xl bg-[#FFF0F4] text-[#EA004B] flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:bg-[#EA004B] group-hover:text-white transition-all shadow-xs">
+                                    <Icon className="w-4 h-4" />
+                                  </div>
+                                  <div className="min-w-0 flex-1">
+                                    <div className="flex items-center gap-2 mb-0.5">
+                                      <span className="text-xs font-bold text-slate-900 group-hover:text-[#EA004B] transition-colors truncate">
+                                        {item.title}
+                                      </span>
+                                      <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 group-hover:bg-[#FFF0F4] group-hover:text-[#EA004B]">
+                                        {item.badge}
+                                      </span>
+                                    </div>
+                                    <p className="text-[11px] text-slate-500 leading-snug line-clamp-1">
+                                      {item.desc}
+                                    </p>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </div>
                       </div>
 
-                      {productSolutions.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <Link
-                            key={item.title}
-                            href={item.href}
-                            onClick={() => setDesktopMegaOpen(false)}
-                            className="group p-3 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all flex items-start gap-3"
-                          >
-                            <div className="w-9 h-9 rounded-xl bg-[#FFF0F4] text-[#EA004B] flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:bg-[#EA004B] group-hover:text-white transition-all shadow-xs">
-                              <Icon className="w-4.5 h-4.5" />
+                      {/* Right Column: Featured Compliance Card (Menü Şeffaflık Yasası) */}
+                      <div className="col-span-5 flex flex-col">
+                        <Link
+                          href="/menu-yasal-uyumluluk"
+                          onClick={() => setDesktopMegaOpen(false)}
+                          className="relative flex-1 flex flex-col justify-between p-6 rounded-2xl bg-gradient-to-b from-[#181320] via-[#110F17] to-[#0A0910] border border-white/10 hover:border-[#EA004B]/50 transition-all duration-300 shadow-xl group overflow-hidden"
+                        >
+                          {/* Radial Ambient Glow */}
+                          <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-[#EA004B]/25 blur-2xl group-hover:bg-[#EA004B]/40 transition-all pointer-events-none" />
+
+                          <div>
+                            {/* Pill Badge */}
+                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EA004B]/20 border border-[#EA004B]/30 mb-4 shadow-xs">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#EA004B] animate-pulse" />
+                              <span className="text-[10px] font-black tracking-wider text-[#FF457E] uppercase">
+                                YENİ · 2026
+                              </span>
                             </div>
-                            <div className="min-w-0 flex-1">
-                              <div className="flex items-center gap-2 mb-0.5">
-                                <span className="text-xs font-bold text-slate-900 group-hover:text-[#EA004B] transition-colors truncate">
-                                  {item.title}
-                                </span>
-                                <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 group-hover:bg-[#FFF0F4] group-hover:text-[#EA004B]">
-                                  {item.badge}
-                                </span>
-                              </div>
-                              <p className="text-[11px] text-slate-500 leading-snug line-clamp-2">
-                                {item.desc}
-                              </p>
+
+                            {/* Shield Icon Container */}
+                            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#EA004B]/25 to-purple-900/30 border border-[#EA004B]/30 flex items-center justify-center text-[#FF2A6D] mb-4 shadow-sm group-hover:scale-105 transition-transform">
+                              <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
                             </div>
-                          </Link>
-                        );
-                      })}
+
+                            {/* Title */}
+                            <h4 className="text-base font-black text-white tracking-tight leading-snug mb-2 group-hover:text-rose-200 transition-colors">
+                              Menü Şeffaflık Yasası
+                            </h4>
+
+                            {/* Description */}
+                            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                              2026–2027 kademeli resmî takvim — Oxonom Menu bilgi katmanı yönetimine hazır.
+                            </p>
+                          </div>
+
+                          {/* Bottom Link */}
+                          <div className="pt-6 mt-4 border-t border-white/10 flex items-center gap-1.5 text-xs font-bold text-[#EA004B] group-hover:text-[#FF4A85] transition-colors">
+                            <span>Detaya git</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </Link>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -453,8 +503,40 @@ export function Navbar() {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="space-y-2.5"
+                    className="space-y-3"
                   >
+                    {/* Featured Compliance Card for Mobile (Ekteki Görsel) */}
+                    <Link
+                      href="/menu-yasal-uyumluluk"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="relative block p-4 rounded-2xl bg-gradient-to-b from-[#181320] via-[#110F17] to-[#0A0910] border border-white/10 shadow-lg overflow-hidden group active:scale-[0.98] transition-all"
+                    >
+                      <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-[#EA004B]/25 blur-xl pointer-events-none" />
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#EA004B]/20 border border-[#EA004B]/30 text-[9px] font-black tracking-wider text-[#FF457E] uppercase">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#EA004B] animate-pulse" />
+                          YENİ · 2026
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#EA004B]/25 to-purple-900/30 border border-[#EA004B]/30 flex items-center justify-center text-[#FF2A6D] flex-shrink-0">
+                          <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <h4 className="text-sm font-black text-white tracking-tight leading-snug">
+                            Menü Şeffaflık Yasası
+                          </h4>
+                          <p className="text-[11px] text-slate-300 leading-snug mt-1">
+                            2026–2027 kademeli resmî takvim — Oxonom Menu bilgi katmanı yönetimine hazır.
+                          </p>
+                          <div className="mt-2.5 flex items-center gap-1 text-[11px] font-bold text-[#EA004B]">
+                            <span>Detaya git</span>
+                            <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+
                     <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#EA004B] block mb-1">
                       Öne Çıkan Modüller
                     </span>

@@ -105,6 +105,12 @@ export function Footer() {
                     Fiyatlandırma
                   </Link>
                 </li>
+                <li>
+                  <Link href="/menu-yasal-uyumluluk" className="hover:text-white transition-colors flex items-center gap-1.5 text-rose-300 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#EA004B]" />
+                    <span>Menü Şeffaflık Yasası</span>
+                  </Link>
+                </li>
               </ul>
             </div>
 
