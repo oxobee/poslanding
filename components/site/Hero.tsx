@@ -79,55 +79,80 @@ export function Hero() {
           <ChevronRight className="w-3.5 h-3.5 stroke-[2.5] flex-shrink-0" />
         </Link>
 
-        {/* Main Headline with 3D Rotating Business Type: Restoran, Cafe, Otel, Lokanta */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.22] sm:leading-[1.16]">
-          {/* Distinctive 3D Tumbler Capsule Container */}
-          <span className="relative inline-flex items-center justify-center align-baseline [perspective:1200px] my-1 mr-2 sm:mr-3">
-            <span className="relative inline-flex items-center justify-center min-w-[170px] sm:min-w-[240px] md:min-w-[280px] lg:min-w-[320px] px-3.5 sm:px-6 py-1 sm:py-2 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white via-[#FFF7F9] to-[#FFEBF1] border-2 border-[#EA004B]/35 shadow-[0_10px_28px_-6px_rgba(234,0,75,0.28)] ring-4 ring-[#EA004B]/10 overflow-hidden">
-              {/* Subtle Glass Specular Top Highlight */}
-              <span className="absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-white/80 to-transparent pointer-events-none" />
+        {/* Main Headline with Exact Canvas-Selection-Box Style Rotating Business Type */}
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.26] sm:leading-[1.18]">
+          {/* Canvas Text Selection Box */}
+          <span className="relative inline-flex items-center align-baseline [perspective:1000px] my-1 mr-6 sm:mr-8 md:mr-10">
+            <span className="relative inline-flex items-center justify-center min-w-[130px] sm:min-w-[190px] md:min-w-[230px] lg:min-w-[265px] px-2.5 sm:px-4 py-0.5 sm:py-1 bg-[#EA004B]/12 select-none">
+              {/* Left Handle Bar (extends above selection box with top square pin) */}
+              <span className="absolute left-0 -top-2.5 sm:-top-3 bottom-0 w-[2.5px] sm:w-[3px] bg-[#EA004B] pointer-events-none">
+                <span className="absolute -top-[4px] -left-[3.5px] sm:-left-[4px] w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#EA004B] rounded-[1px] shadow-xs" />
+              </span>
 
-              {/* 3D Animated Content Roller */}
+              {/* Right Handle Bar (extends below selection box with bottom square pin) */}
+              <span className="absolute right-0 top-0 -bottom-2.5 sm:-bottom-3 w-[2.5px] sm:w-[3px] bg-[#EA004B] pointer-events-none">
+                <span className="absolute -bottom-[4px] -left-[3.5px] sm:-left-[4px] w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#EA004B] rounded-[1px] shadow-xs" />
+              </span>
+
+              {/* Canvas Pointer Cursor (Positioned at top right of the selection) */}
+              <motion.div
+                animate={{
+                  y: [0, -3, 0],
+                  x: [0, 2, 0],
+                }}
+                transition={{
+                  duration: 2.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute -right-6 sm:-right-7 md:-right-8 top-0 sm:top-1 z-20 pointer-events-none select-none"
+              >
+                <svg
+                  className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 drop-shadow-md"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5 3L11.5 21L14.5 13.5L22 10.5L4.5 3Z"
+                    fill="#EA004B"
+                    stroke="#FFFFFF"
+                    strokeWidth="2"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </motion.div>
+
+              {/* 3D Animated Word Flip */}
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
                   key={currentItem.name}
                   initial={{
                     rotateX: 90,
-                    y: 22,
+                    y: 16,
                     opacity: 0,
-                    scale: 0.9,
                   }}
                   animate={{
                     rotateX: 0,
                     y: 0,
                     opacity: 1,
-                    scale: 1,
                   }}
                   exit={{
                     rotateX: -90,
-                    y: -22,
+                    y: -16,
                     opacity: 0,
-                    scale: 0.9,
                   }}
                   transition={{
-                    duration: 0.42,
+                    duration: 0.38,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="inline-flex items-center gap-2 sm:gap-3 select-none transform-gpu"
+                  className="inline-block text-slate-900 font-black tracking-tight transform-gpu"
                   style={{
-                    transformOrigin: "50% 50% -24px",
+                    transformOrigin: "50% 50% -20px",
                     backfaceVisibility: "hidden",
                   }}
                 >
-                  {/* Category Micro-Icon Badge */}
-                  <span className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#FF2B72] to-[#EA004B] text-white flex items-center justify-center shadow-md shadow-[#EA004B]/30 flex-shrink-0">
-                    <CurrentIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5 stroke-[2.5]" />
-                  </span>
-
-                  {/* Sector Title with Radiant Gradient & Dimensional Depth */}
-                  <span className="bg-gradient-to-r from-[#EA004B] via-[#FF1E6A] to-[#B80036] bg-clip-text text-transparent font-black tracking-tight drop-shadow-[0_1px_2px_rgba(234,0,75,0.2)]">
-                    {currentItem.name}
-                  </span>
+                  {currentItem.name}
                 </motion.span>
               </AnimatePresence>
             </span>
