@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"main": ".open-next/worker.js",
+	"main": "worker-entry.js",
 	"name": "oxonompos-tanitim",
 	"compatibility_date": "2026-11-16",
 	"compatibility_flags": [
@@ -17,6 +17,10 @@
 			// see https://opennext.js.org/cloudflare/caching
 			"binding": "WORKER_SELF_REFERENCE",
 			"service": "oxonompos-tanitim"
+		},
+		{
+			"binding": "APP_WORKER",
+			"service": "oxonompos-web"
 		}
 	],
 	"r2_buckets": [

@@ -130,9 +130,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://pos.oxonom.com/restoran-girisi"
-                    target="_blank"
-                    rel="noreferrer"
+                    href="/app"
                     className="hover:text-white transition-colors"
                   >
                     Restoran Girişi
