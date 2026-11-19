@@ -130,7 +130,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/app"
+                    href="/app/login"
                     className="hover:text-white transition-colors"
                   >
                     Restoran Girişi
